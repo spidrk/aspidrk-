@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ASPIDRK - متجر التكنولوجيا والموضة الرقمية</title>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        :root {
+            --primary: #0066ff;
+            --secondary: #8a2be2;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --neon-blue: #00f5ff;
+            --neon-purple: #b300ff;
+            --tech-green: #00ff88;
+            --tech-pink: #ff00aa;
+            }
+        
+        body {
+            font-family: 'Tajawal', 'Roboto', sans-serif;
+            background-color: #0a0a1a;
+            color: #ffffff;
+            margin: 0;
+            padding: 0;
+            transition: all 0.5s ease;
+        }
+        
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, rgba(0,15,36,0.9) 0%, rgba(43,8,77,0.9) 100%);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 30%, rgba(0, 245, 255, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 0 20px var(--neon-blue);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: translateX(-100%);
+            animation: shine 3s infinite;
+        }
+        
+        @keyframes shine {
+            100% { transform: translateX(100%); }
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--neon-blue), var(--tech-green));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+        
+        /* Language and Currency Selector */
+        .settings-bar {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        
+        .language-selector, .currency-selector {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .selector-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+        
+        .selector-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+        }
+        
+        .selector-dropdown {
+            display: none;
+            position: absolute;
+            background: rgba(15, 23, 42, 0.95);
+            min-width: 120px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            right: 0;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+        }
+        
+        .selector-dropdown a {
+            color: white;
+            padding: 10px 15px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .selector-dropdown a:hover {
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--neon-blue);
+        }
+        
+        .show { display: block; }
+        
+        /* Navigation */
+        .nav-container {
+            background: rgba(10, 10, 26, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.2);
+        }
+        
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-item {
+            position: relative;
+        }
+        
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .nav-link:hover {
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--neon-blue);
+        }
+        
+        /* Unique hover effects for each button */
+        .nav-link.about:hover {
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.5);
+        }
+        
+        .nav-link.store:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+        }
+        
+        .nav-link.blog:hover {
+            box-shadow: 0 0 15px rgba(179, 0, 255, 0.5);
+        }
+        
+        .nav-link.community:hover {
+            box-shadow: 0 0 15px rgba(255, 0, 170, 0.5);
+        }
+        
+        .nav-link.support:hover {
+            box-shadow: 0 0 15px rgba(255, 62, 62, 0.5);
+        }
+        
+        .nav-link.terms:hover {
+            box-shadow: 0 0 15px rgba(255, 165, 0, 0.5);
+        }
+        
+        .nav-link.games:hover {
+            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
+        }
+        
+        .nav-link.topup:hover {
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+        
+        .nav-link.premium:hover {
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: var(--neon-blue);
+            transition: width 0.3s;
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .dropdown-menu {
+            display: none;
+            position: absolute;
+            background: rgba(15, 23, 42, 0.95);
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+            z-index: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            right: 0;
+            border: 1px solid rgba(0, 245, 255, 0.2);
+        }
+        
+        .dropdown-item {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.3s;
+            border-left: 3px solid transparent;
+        }
+        
+        .dropdown-item:hover {
+            background: rgba(0, 245, 255, 0.1);
+            border-left: 3px solid var(--neon-blue);
+            padding-right: 20px;
+        }
+        
+        [data-has-dropdown]:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .indicator-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-left: 8px;
+        }
+        
+        
+.dot-green, .dot-blue, .dot-red, .dot-purple {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 8px;
+    box-shadow: 0 0 8px currentColor;
+}
+.dot-green { background-color: var(--tech-green); }
+.dot-blue { background-color: var(--neon-blue); }
+.dot-red { background-color: #ff3e3e; }
+.dot-purple { background-color: var(--neon-purple); }
+
+        
+        /* Special Banner for ASPIDRK */
+        .asp-banner {
+            background: linear-gradient(135deg, rgba(0,15,36,0.9) 0%, rgba(43,8,77,0.9) 100%);
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.3);
+            border-top: 1px solid rgba(0, 245, 255, 0.3);
+        }
+        
+        .asp-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 L0,100 Z" fill="none" stroke="rgba(0,245,255,0.1)" stroke-width="0.5" stroke-dasharray="5,5"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .asp-banner-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .asp-title {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            background: linear-gradient(to right, var(--neon-blue), var(--tech-green), var(--neon-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .asp-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--neon-blue), var(--tech-green), var(--neon-purple));
+            border-radius: 3px;
+        }
+        
+        .asp-subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 300;
+        }
+        
+        /* Sections Grid */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-card {
+            background: rgba(15, 23, 42, 0.7);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 245, 255, 0.1);
+            position: relative;
+        }
+        
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,245,255,0.05) 0%, rgba(179,0,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 245, 255, 0.1);
+            border-color: rgba(0, 245, 255, 0.3);
+        }
+        
+        .section-card:hover::before {
+            opacity: 1;
+        }
+        
+        .section-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid rgba(0, 245, 255, 0.1);
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 500;
+        }
+        
+        .section-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .section-body {
+            padding: 1.5rem;
+        }
+        
+        .section-description {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 1.5rem;
+            font-family: 'Tajawal', sans-serif;
+            font-weight: 300;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .section-link {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(0, 245, 255, 0.1);
+            color: var(--neon-blue);
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 245, 255, 0.3);
+            font-family: 'Tajawal', sans-serif;
+        }
+        
+        .section-link:hover {
+            background: rgba(0, 245, 255, 0.2);
+            box-shadow: 0 0 15px rgba(0, 245, 255, 0.3);
+        }
+        
+        /* Glowing Dots for Sections */
+        .section-dots {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            display: flex;
+            gap: 5px;
+        }
+        
+        .section-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            box-shadow: 0 0 5px currentColor;
+        }
+        
+        .dot-blue { color: var(--neon-blue); }
+        .dot-green { color: var(--tech-green); }
+        .dot-purple { color: var(--neon-purple); }
+        .dot-pink { color: var(--tech-pink); }
+        
+        /* Custom Icons for Sections */
+        .custom-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1.5rem;
+            opacity: 0.3;
+            transition: all 0.3s;
+        }
+        
+        .section-card:hover .custom-icon {
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+        
+        /* Theme Effects */
+        .theme-effect {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.15;
+            z-index: -1;
+            animation: float 15s infinite ease-in-out;
+        }
+        
+        .effect-1 {
+            background: var(--neon-blue);
+            top: 20%;
+            left: 10%;
+            width: 150px;
+            height: 150px;
+        }
+        
+        .effect-2 {
+            background: var(--neon-purple);
+            bottom: 10%;
+            right: 15%;
+            width: 200px;
+            height: 200px;
+        }
+        
+        .effect-3 {
+            background: var(--tech-green);
+            top: 60%;
+            left: 30%;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            25% { transform: translate(50px, 50px); }
+            50% { transform: translate(0, 100px); }
+            75% { transform: translate(-50px, 50px); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                padding: 1rem;
+            }
+            
+            .main-nav {
+                flex-wrap: wrap;
+            }
+            
+            .asp-title {
+                font-size: 3rem;
+            }
+            
+            .asp-subtitle {
+                font-size: 1rem;
+            }
+            
+            .sections-grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+        }
+    </style>
+<style>
+.settings-bar {
+    position: relative;
+    z-index: 1000;
+}
+.selector-dropdown.show {
+    display: block;
+}
+</style><style>
+.settings-bar {
+    position: relative;
+    z-index: 1000;
+}
+
+.selector-dropdown.show {
+    display: block;
+}
+
+/* Ensure sections have space for the dropdown above */
+.sections-grid {
+    padding-top: 150px;  /* Add space for the dropdown to be visible */
+}
+</style><style>
+.settings-bar {
+    position: relative;
+    z-index: 10000;
+}
+
+.selector-dropdown.show {
+    display: block !important;
+}
+
+/* Ensure sections have space for the dropdown to be visible */
+.sections-grid {
+    padding-top: 150px;  /* Add space for the dropdown to be visible above sections */
+}
+</style><style>
+.settings-bar {
+    position: relative;
+    z-index: 10000;
+}
+
+.selector-dropdown.show {
+    display: block !important;
+}
+
+/* Ensure sections have enough space for the dropdown to appear above them */
+.sections-grid {
+    padding-top: 250px;  /* Adjust to give enough space for dropdown to appear */
+}
+</style><style>
+.settings-bar {
+    position: relative;
+    z-index: 10000;
+}
+
+.selector-dropdown.show {
+    display: block !important;
+}
+
+.sections-grid {
+    padding-top: 150px; /* Adjust to give space for dropdown */
+}
+
+.selector-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.selector-btn i {
+    display: none; /* Hide icon from language/currency selector buttons */
+}
+</style><style>
+.settings-bar {
+    position: relative;
+    z-index: 10000;
+}
+
+.selector-dropdown.show {
+    display: block !important;
+}
+
+.sections-grid {
+    padding-top: 150px; /* Adjust space for dropdown visibility */
+}
+
+.selector-btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.selector-btn i {
+    display: none; /* Remove chevron icon */
+}
+</style><style>
+.settings-bar {
+    position: relative;
+    z-index: 10000;
+}
+
+.selector-dropdown.show {
+    display: block !important;
+}
+
+.sections-grid {
+    padding-top: 200px;  /* Provide ample space above sections for dropdowns to show */
+}
+
+.logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.logo-text {
+    font-size: 3rem;
+    font-weight: bold;
+    background: linear-gradient(to right, var(--neon-blue), var(--tech-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.5);
+}
+
+.selector-btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+</style><style>
+/* General body and background styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Logo Style */
+.logo-text {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00f2fe, #3f5efb, #0a1a2e);
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px rgba(0, 245, 255, 0.8), 0 0 40px rgba(0, 245, 255, 0.6), 0 0 80px rgba(0, 245, 255, 0.4);
+    animation: neonGlow 1.5s ease-in-out infinite alternate;
+}
+
+/* Neon glow effect */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 20px rgba(0, 245, 255, 0.8), 0 0 40px rgba(0, 245, 255, 0.6), 0 0 80px rgba(0, 245, 255, 0.4);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(0, 245, 255, 1), 0 0 50px rgba(0, 245, 255, 0.9), 0 0 100px rgba(0, 245, 255, 0.8);
+    }
+}
+
+/* Hover effect */
+.logo-text:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+</style><style>
+/* General body and background styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: white;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Logo text */
+.logo-text {
+    font-size: 4rem;
+    font-weight: bold;
+    background: linear-gradient(45deg, #00f2fe, #3f5efb, #0a1a2e);
+    background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 10px rgba(0, 245, 255, 0.6), 0 0 20px rgba(0, 245, 255, 0.4), 0 0 30px rgba(0, 245, 255, 0.2);
+    animation: neonGlow 2s ease-in-out infinite alternate, gradientShift 3s ease-in-out infinite alternate;
+    transition: transform 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+/* Neon glow effect */
+@keyframes neonGlow {
+    0% {
+        text-shadow: 0 0 10px rgba(0, 245, 255, 0.6), 0 0 20px rgba(0, 245, 255, 0.4), 0 0 30px rgba(0, 245, 255, 0.2);
+    }
+    100% {
+        text-shadow: 0 0 20px rgba(0, 245, 255, 1), 0 0 40px rgba(0, 245, 255, 0.8), 0 0 60px rgba(0, 245, 255, 0.6);
+    }
+}
+
+/* Gradient color shift animation */
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(45deg, #00f2fe, #3f5efb, #0a1a2e);
+    }
+    50% {
+        background: linear-gradient(45deg, #ff4c61, #ff9900, #ff5e62);
+    }
+    100% {
+        background: linear-gradient(45deg, #00f2fe, #3f5efb, #0a1a2e);
+    }
+}
+
+/* Hover effect for relaxing scale */
+.logo-text:hover {
+    transform: scale(1.05);
+}
+
+/* Styling for the header */
+header {
+    text-align: center;
+    padding: 20px;
+}
+</style></head>
+<body>
+<!-- Theme Effects -->
+<div class="theme-effect effect-1"></div>
+<div class="theme-effect effect-2"></div>
+<div class="theme-effect effect-3"></div>
+<!-- Header -->
+<header class="header"></header>
+<!-- Navigation -->
+<div class="nav-container">
+<nav aria-label="Main navigation" class="main-nav" role="navigation">
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link about" href="#">
+<i class="fas fa-info-circle"></i>
+<span data-lang="ar">عن ASPIDRK</span>
+<span data-lang="en" style="display:none">About ASPIDRK</span>
+<span class="indicator-dot dot-blue"></span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">من نحن</a><a class="dropdown-item" href="#">رؤيتنا</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link store" href="#">
+<i class="fas fa-store"></i>
+<span data-lang="ar">المتجر الرقمي</span>
+<span data-lang="en" style="display:none">Digital Store</span>
+<span class="indicator-dot dot-green"></span>
+</a>
+<div class="dropdown-menu">
+<a class="dropdown-item" href="#">
+<i class="fas fa-gamepad"></i>
+<span data-lang="ar">الألعاب</span>
+<span data-lang="en" style="display:none">Games</span>
+</a>
+<a class="dropdown-item" href="#">
+<i class="fas fa-credit-card"></i>
+<span data-lang="ar">البطاقات الرقمية</span>
+<span data-lang="en" style="display:none">Digital Cards</span>
+</a>
+<a class="dropdown-item" href="#">
+<i class="fas fa-tshirt"></i>
+<span data-lang="ar">الموضة الرقمية</span>
+<span data-lang="en" style="display:none">Digital Fashion</span>
+</a>
+</div>
+</div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link blog" href="#">
+<i class="fas fa-blog"></i>
+<span data-lang="ar">المدونة والأخبار</span>
+<span data-lang="en" style="display:none">Blog &amp; News</span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">مقالات</a><a class="dropdown-item" href="#">أخبار</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link community" href="#">
+<i class="fas fa-users"></i>
+<span data-lang="ar">المجتمع</span>
+<span data-lang="en" style="display:none">Community</span>
+<span class="indicator-dot dot-purple"></span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">منتدى</a><a class="dropdown-item" href="#">الأعضاء</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link support" href="#">
+<i class="fas fa-headset"></i>
+<span data-lang="ar">الدعم والمساعدة</span>
+<span data-lang="en" style="display:none">Support &amp; Help</span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">مساعدة</a><a class="dropdown-item" href="#">اتصل بنا</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link terms" href="#">
+<i class="fas fa-file-contract"></i>
+<span data-lang="ar">الشروط والسياسات</span>
+<span data-lang="en" style="display:none">Terms &amp; Policies</span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">سياسة الخصوصية</a><a class="dropdown-item" href="#">شروط الاستخدام</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link games" href="#">
+<i class="fas fa-gamepad"></i>
+<span data-lang="ar">الألعاب</span>
+<span data-lang="en" style="display:none">Games</span>
+<span class="indicator-dot dot-red"></span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">كل الألعاب</a><a class="dropdown-item" href="#">ألعاب جديدة</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link topup" href="#">
+<i class="fas fa-coins"></i>
+<span data-lang="ar">شحن الألعاب</span>
+<span data-lang="en" style="display:none">Game Top-Up</span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">بطاقات الشحن</a><a class="dropdown-item" href="#">العروض</a></div></div>
+<div class="nav-item" data-has-dropdown="true">
+<a aria-expanded="false" aria-haspopup="true" class="nav-link premium" href="#">
+<i class="fas fa-crown"></i>
+<span data-lang="ar">الاشتراك المميز</span>
+<span data-lang="en" style="display:none">Premium</span>
+</a>
+<div class="dropdown-menu"><a class="dropdown-item" href="#">مزايا الاشتراك</a><a class="dropdown-item" href="#">الأسعار</a></div></div>
+</nav>
+</div>
+<!-- Special ASPIDRK Banner -->
+<section aria-label="ASPIDRK introduction section" class="asp-banner" role="banner">
+<div class="asp-banner-content">
+<h1 class="asp-title">ASPIDRK</h1>
+<p class="asp-subtitle" data-lang="ar">
+                وجهتك الأولى للتكنولوجيا والموضة الرقمية. اكتشف أحدث المنتجات والعروض الحصرية.
+            </p>
+<p class="asp-subtitle" data-lang="en" style="display:none">
+                Your premier destination for technology and digital fashion. Discover the latest products and exclusive offers.
+            </p>
+</div>
+</section>
+<!-- Sections Grid -->
+<div class="sections-grid">
+<!-- About Section -->
+<div class="section-card">
+<div class="section-dots">
+<div class="section-dot dot-blue"></div>
+<div class="section-dot dot-blue"></div>
+<div class="section-dot dot-blue"></div>
+</div>
+<i class="fas fa-info-circle custom-icon" style="color: var(--neon-blue);"></i>
+<div class="section-header">
+<h3 class="section-title">
+<div class="section-icon"><i class="fas fa-info-circle"></i></div>
+<span data-lang="ar">عن ASPIDRK</span>
+<span data-lang="en" style="display:none">About ASPIDRK</span>
+</h3>
+</div>
+<div class="section-body">
+<p class="section-description" data-lang="ar">
+                    تعرف على رؤيتنا ورسالتنا والخدمات التي نقدمها لعملائنا الكرام.
+                </p>
+<p class="section-description" data-lang="en" style="display:none">
+                    Learn about our vision, mission, and the services we provide to our valued customers.
+                </p>
+<a class="section-link" data-lang="ar" href="#">المزيد</a>
+<a class="section-link" data-lang="en" href="#" style="display:none">More</a>
+</div>
+</div>
+<!-- Digital Store Section -->
+<div class="section-card">
+<div class="section-dots">
+<div class="section-dot dot-green"></div>
+<div class="section-dot dot-green"></div>
+<div class="section-dot dot-green"></div>
+</div>
+<i class="fas fa-store custom-icon" style="color: var(--tech-green);"></i>
+<div class="section-header">
+<h3 class="section-title">
+<div class="section-icon"><i class="fas fa-store"></i></div>
+<span data-lang="ar">المتجر الرقمي</span>
+<span data-lang="en" style="display:none">Digital Store</span>
+</h3>
+</div>
+<div class="section-body">
+<p class="section-description" data-lang="ar">
+                    تصفح أحدث المنتجات الرقمية من ألعاب، برامج، وبطاقات رقمية.
+                </p>
+<p class="section-description" data-lang="en" style="display:none">
+                    Browse the latest digital products including games, software, and digital cards.
+                </p>
+<a class="section-link" data-lang="ar" href="#">تسوق الآن</a>
+<a class="section-link" data-lang="en" href="#" style="display:none">Shop Now</a>
+</div>
+</div>
+<!-- Games Section -->
+<div class="section-card">
+<div class="section-dots">
+<div class="section-dot dot-red"></div>
+<div class="section-dot dot-red"></div>
+<div class="section-dot dot-red"></div>
+</div>
+<i class="fas fa-gamepad custom-icon" style="color: #ff3e3e;"></i>
+<div class="section-header">
+<h3 class="section-title">
+<div class="section-icon"><i class="fas fa-gamepad"></i></div>
+<span data-lang="ar">الألعاب</span>
+<span data-lang="en" style="display:none">Games</span>
+</h3>
+</div>
+<div class="section-body">
+<p class="section-description" data-lang="ar">
+                    اكتشف مجموعة واسعة من الألعاب لجميع الأجهزة والمنصات.
+                </p>
+<p class="section-description" data-lang="en" style="display:none">
+                    Discover a wide range of games for all devices and platforms.
+                </p>
+<a class="section-link" data-lang="ar" href="#">استكشف الألعاب</a>
+<a class="section-link" data-lang="en" href="#" style="display:none">Explore Games</a>
+</div>
+</div>
+<!-- Game Top-Up Section -->
+<div class="section-card">
+<div class="section-dots">
+<div class="section-dot dot-blue"></div>
+<div class="section-dot dot-blue"></div>
+<div class="section-dot dot-blue"></div>
+</div>
+<i class="fas fa-coins custom-icon" style="color: var(--neon-blue);"></i>
+<div class="section-header">
+<h3 class="section-title">
+<div class="section-icon"><i class="fas fa-coins"></i></div>
+<span data-lang="ar">شحن الألعاب</span>
+<span data-lang="en" style="display:none">Game Top-Up</span>
+</h3>
+</div>
+<div class="section-body">
+<p class="section-description" data-lang="ar">
+                    شحن رصيد لألعابك المفضلة بطرق دفع متعددة وآمنة.
+                </p>
+<p class="section-description" data-lang="en" style="display:none">
+                    Top up your favorite games with multiple secure payment methods.
+                </p>
+<a class="section-link" data-lang="ar" href="#">شحن الآن</a>
+<a class="section-link" data-lang="en" href="#" style="display:none">Top-Up Now</a>
+</div>
+</div>
+<!-- Premium Section -->
+<div class="section-card">
+<div class="section-dots">
+<div class="section-dot dot-purple"></div>
+<div class="section-dot dot-purple"></div>
+<div class="section-dot dot-purple"></div>
+</div>
+<i class="fas fa-crown custom-icon" style="color: var(--neon-purple);"></i>
+<div class="section-header">
+<h3 class="section-title">
+<div class="section-icon"><i class="fas fa-crown"></i></div>
+<span data-lang="ar">الاشتراك المميز</span>
+<span data-lang="en" style="display:none">Premium</span>
+</h3>
+</div>
+<div class="section-body">
+<p class="section-description" data-lang="ar">
+                    تمتع بمزايا حصرية وعروض خاصة مع اشتراك ASPIDRK المميز.
+                </p>
+<p class="section-description" data-lang="en" style="display:none">
+                    Enjoy exclusive benefits and special offers with ASPIDRK Premium subscription.
+                </p>
+<a class="section-link" data-lang="ar" href="#">اشترك الآن</a>
+<a class="section-link" data-lang="en" href="#" style="display:none">Subscribe Now</a>
+</div>
+</div>
+<!-- Community Section -->
+<div class="section-card">
+<div class="section-dots">
+<div class="section-dot dot-pink"></div>
+<div class="section-dot dot-pink"></div>
+<div class="section-dot dot-pink"></div>
+</div>
+<i class="fas fa-users custom-icon" style="color: var(--tech-pink);"></i>
+<div class="section-header">
+<h3 class="section-title">
+<div class="section-icon"><i class="fas fa-users"></i></div>
+<span data-lang="ar">المجتمع</span>
+<span data-lang="en" style="display:none">Community</span>
+</h3>
+</div>
+<div class="section-body">
+<p class="section-description" data-lang="ar">
+                    انضم إلى مجتمعنا وتفاعل مع لاعبين ومستخدمين آخرين.
+                </p>
+<p class="section-description" data-lang="en" style="display:none">
+                    Join our community and interact with other players and users.
+                </p>
+<a class="section-link" data-lang="ar" href="#">انضم الآن</a>
+<a class="section-link" data-lang="en" href="#" style="display:none">Join Now</a>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('[data-has-dropdown] > a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const parent = this.parentElement;
+            const menu = parent.querySelector('.dropdown-menu');
+            const isOpen = menu.style.display === 'block';
+
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+            if (!isOpen) menu.style.display = 'block';
+        });
+    });
+    window.addEventListener('click', function(e) {
+        if (!e.target.closest('[data-has-dropdown]')) {
+            document.querySelectorAll('.dropdown-menu').forEach(m => m.style.display = 'none');
+        }
+    });
+});
+</script></body></html>
